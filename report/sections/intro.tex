@@ -1,0 +1,40 @@
+\section{Introduction}
+
+\subsection{Stages of Sleep}
+
+Sleep scoring is based on characteristic patterns in the electroencephalogram (EEG), electro-oculogram (EOG), and electromyogram (EMG). 
+The modern American Academy of Sleep Medicine (AASM) manual recognizes four sleep stages (N1, N2, N3, R) plus Wakefulness, updating the 
+older Rechtschaffen and Kales (R and K) system.
+
+\begin{enumerate}
+    \item \textbf{Wake (W)}: Defined by more than $50\%$ scorable \textbf{alpha activity} (8 to 13 Hz) in the EEG. EOG shows blinking and rapid movements, and submental EMG tone is high.
+    \item \textbf{Stage N1} (Light/Transitional Sleep): A transitional state characterized by low-voltage, mixed-frequency \textbf{theta activity} ($4$ to $7$ Hz). \textbf{Slow Rolling Eye Movements (SREMs)} are evident, but neither sleep spindles nor K complexes are present.
+    \item \textbf{Stage N2} (Intermediate Sleep): Accounts for up to $50\%$ of total sleep time. Defined by the first appearance of \textbf{Sleep Spindles} ($11$ to $16$ Hz) and \textbf{K Complexes}.
+    \item \textbf{Stage N3} (Slow Wave Sleep, SWS): Deepest sleep stage, combining R and K stages 3 and 4. Defined by \textbf{Slow Wave Activity (SWA)} or Delta activity ($0.5$ to $2$ Hz) with an amplitude $\ge 75 \mu \text{V}$ occupying more than $20\%$ of the epoch.
+    \item \textbf{Stage R} (REM/Paradoxical Sleep): Characterized by low-amplitude, mixed-frequency EEG activity, \textbf{Rapid Eye Movements (REMs)} in the EOG leads, and the \textbf{lowest muscle tone (atonia)} in the chin EMG. It typically occurs $90$ to $120$ minutes after sleep onset.
+\end{enumerate}
+
+
+\subsection{Power Spectral Density (PSD) Methods}
+
+Power Spectral Density (PSD) estimation determines how the power of a signal is distributed over frequency. The methods fall into two main categories: Non-Parametric (based on the Fourier Transform) and Parametric (based on model fitting).
+
+\vspace{0.5em}
+\subsection*{Non-Parametric Methods}
+These methods compute the PSD directly from the signal data without assuming an underlying generating model.
+
+\begin{itemize}
+    \item \textbf{Periodogram:} The most basic PSD estimator. It is calculated as the squared magnitude of the Discrete Fourier Transform (DFT) of the signal. While simple, it typically suffers from high variance (noisy results) and poor spectral leakage due to implicit rectangular windowing.
+    \item \textbf{Periodogram + Hamming Window (HW):} Applies a non-rectangular window (Hamming) to the time-domain signal before computing the DFT. This improves the estimate by smoothing the data boundaries, which significantly \textbf{reduces spectral leakage} (smearing of energy across frequency bins) but slightly \textbf{worsens frequency resolution}.
+    \item \textbf{Welch Periodogram:} A technique to reduce the high variance of the raw Periodogram. The signal is segmented into overlapping sections, each segment is windowed, and the PSDs of all segments are calculated and then averaged together. This results in a much smoother, more stable (lower variance) PSD estimate.
+\end{itemize}
+
+\vspace{0.5em}
+\subsection*{Parametric (AR Model) Methods}
+These methods assume the signal is the output of an Autoregressive (AR) system driven by white noise. The PSD is calculated from the estimated coefficients (parameters) of the AR model, offering much higher frequency resolution, especially with short data records. All use the \textbf{Burg method} for coefficient estimation.
+
+\begin{itemize}
+    \item \textbf{Burg Method (Low/High Order):} The AR model order is chosen arbitrarily low (e.g., $P=2$) or high (e.g., $P=50$). A low order yields a very smooth, low-resolution PSD, while a very high order can capture noise components and become unstable.
+    \item \textbf{Burg Method (AIC):} Selects the model order ($P$) using the \textbf{Akaike Information Criterion (AIC)}. AIC favors models that minimize estimation error while penalizing complexity, but it tends to slightly overestimate the true order.
+    \item \textbf{Burg Method (MDL):} Selects the model order ($P$) using the \textbf{Minimum Description Length (MDL)} criterion. MDL imposes a stricter penalty on model complexity than AIC, resulting in a more parsimonious (lower) order, which is often considered the most stable and reliable estimate for short data sets.
+\end{itemize}

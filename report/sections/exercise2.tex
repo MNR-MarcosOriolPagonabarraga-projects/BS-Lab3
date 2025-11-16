@@ -1,0 +1,131 @@
+\section{Changes in Relative Power during Sleep}
+
+To observe changes of each relative power in frequency band during sleep (comparing the
+five sleep stages in a figure with the same max value for the five topograms which must
+be indicated). You can select only two spectral methods: selecting one of them with
+similar performance in most methods and another different to observe the influence of the
+estimator in checking these changes (each method in separated figures). Select the Welch
+periodogram and AR with order selected by MDL criteria.
+
+\subsection*{Welch Periodogram vs AR MDL}
+In this exercise we will:
+
+\begin{itemize}
+    \item Compare the power changes across all stages of sleep 
+    \item Both for Welch Periodogram and AR MDL
+\end{itemize}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{img/workflow}
+    \caption{Workflow done to achieve the exercise.}
+\end{figure}
+
+
+\subsection{Defined Frequency Bands}
+\label{sec:defined_bands}
+
+\noindent For the quantitative analysis of the EEG signal across sleep stages, the Power Spectral Density (PSD) is segmented into the following 
+frequency bands. The power contained within these ranges correlates directly to distinct mental or sleep states.
+
+\vspace{0.5em} % Adds a little vertical space
+
+\begin{itemize}
+    \item \textbf{Low Delta ($0.5-2$ Hz):} A sub-band of Delta often associated with the deepest stages of non-REM sleep (N3) and slow wave activity.
+    \item \textbf{Delta ($\delta$, $0.5-4$ Hz):} The hallmark of deep sleep (SWS/N3). Characterized by high amplitude and slow activity.
+    \item \textbf{Theta ($\theta$, $4-8$ Hz):} Predominant activity during the transition into sleep and light sleep stages (N1 and N2).
+    \item \textbf{Alpha ($\alpha$, $8-13$ Hz):} Associated with quiet, relaxed wakefulness, typically seen over the posterior scalp with eyes closed.
+    \item \textbf{Sigma ($\sigma$, $11-16$ Hz):} This range encompasses the **Sleep Spindles**, which are a defining feature of Stage N2 sleep.
+    \item \textbf{Beta ($\beta$, $16-35$ Hz):} High-frequency activity linked to active concentration, complex thought, and wakefulness.
+\end{itemize}
+
+\subsection{Results}
+After applying the defined workflow to the 5 stages of sleep, 
+we obtained the following results for the previously defined bands.
+
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_low_delta}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_low_delta}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_delta}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_delta}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_theta}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_theta}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_alpha}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_alpha}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_sigma}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_sigma}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[!h]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_ar_beta}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.5\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/topogram_welch_beta}
+    \end{subfigure}
+\end{figure}
+
+
+\subsection{Discussion}
+The obtained result match very well with what is described in the literature.
+Showing a clear correlation with Power Sprectral Density and activity in each specific 
+case. 
+In our opinion, the stage S1 (N1) is very interesting because appears to have oscillations 
+from both stages (sleep/awake) and has activity of all the bands except from alpha band.\\
+
+Both Welch Periodogram and AR (MDL) PSD methods perform very similarly. However, by observing 
+topogram representations of PSD power/electrode, we think that the AR method is more prone to 
+saturate (giving less visual evidence of differences across electrodes), whereas the Welch 
+method seems more balanced.
