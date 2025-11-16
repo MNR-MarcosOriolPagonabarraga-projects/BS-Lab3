@@ -26,11 +26,9 @@ function plot_comparison_topograms(data_to_plot, stages, band_name, method_title
 
     % Use tiledlayout with compact spacing
     t = tiledlayout(1, num_stages);
-    t.TileSpacing = 'compact';    % reduce spacing between tiles
-    t.Padding     = 'compact';    % reduce outer margin
+    t.TileSpacing = 'compact';
+    t.Padding     = 'compact';
 
-    % Optional: even tighter control
-    % t.Padding = 'none';        % minimal outer whitespace
 
     % Global title
     sgtitle(t, sprintf('%s %s Power (Max=%.3f)', method_title, band_str_title ,max_val), ...

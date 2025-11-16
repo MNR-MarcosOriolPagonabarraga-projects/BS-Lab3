@@ -17,7 +17,6 @@ function avg_order = get_ar_mdl_order(eeg_data, fs, max_order)
     
     avg_order = round(mean(mdl_orders, 'omitnan')); % Omitnan for robustness
     
-    % Safety fallback
     if isnan(avg_order) || avg_order < 1
        avg_order = 10; 
     end

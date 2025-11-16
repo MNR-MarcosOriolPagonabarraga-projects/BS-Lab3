@@ -22,23 +22,76 @@ In this exercise we will:
     \caption{Workflow done to achieve the exercise.}
 \end{figure}
 
+\vspace{1cm}
+\noindent \subsubsection*{With that logic, we implemented the following code.}
 
-\subsection{Defined Frequency Bands}
-\label{sec:defined_bands}
+\begin{lstlisting}[caption={Code used for batch processing both PSD methods on different stages of sleep for different frequency bands.}]
+for i = 1:num_stages
+    stage_name = stages{i};
+    fprintf('  Processing Stage: %s\n', stage_name);
+    
+    % Load Data
+    file_name = sprintf('%s%s.mat', data_path, stage_name);
+    data = load(file_name);
+    signals = data.signals;
+    
+    % Temporary storage for all epochs within this stage (Channels x Epochs)
+    stage_power_welch = struct();
+    stage_power_ar = struct();
+    for b = 1:num_bands
+        stage_power_welch.(band_names{b}) = zeros(num_channels, num_epochs);
+        stage_power_ar.(band_names{b}) = zeros(num_channels, num_epochs);
+    end
 
-\noindent For the quantitative analysis of the EEG signal across sleep stages, the Power Spectral Density (PSD) is segmented into the following 
-frequency bands. The power contained within these ranges correlates directly to distinct mental or sleep states.
+    % Loop through Epochs 
+    for j = 1:num_epochs
+        
+        % Extract Epoch
+        start_idx = (j-1) * nsamples_epoch + 1;
+        end_idx = j * nsamples_epoch;
+        eeg_epoch_raw = signals(start_idx:end_idx, eeg_channel_indices);
+        
+        % Filter Epoch
+        eeg_epoch_filtered = filtfilt(b_filter, a_filter, eeg_epoch_raw);
+        
+        % Method 1: Welch
+        [PxxW, f_welch] = pwelch(eeg_epoch_filtered, samples_segment, overlap_samples, nfft, fs, 'onesided');
+        rel_power_w = calculate_relative_powers(PxxW, f_welch, bands);
+        
+        % Method 2: AR (MDL)
+        avg_nmdl = get_ar_mdl_order(eeg_epoch_filtered, fs, max_ar_order);
+        [PxxAR, f_ar] = pburg(eeg_epoch_filtered, avg_nmdl, nfft, fs, 'onesided'); 
+        rel_power_ar = calculate_relative_powers(PxxAR, f_ar, bands);
+        
+        % Store results for this epoch
+        for b = 1:num_bands
+            stage_power_welch.(band_names{b})(:, j) = rel_power_w.(band_names{b});
+            stage_power_ar.(band_names{b})(:, j) = rel_power_ar.(band_names{b});
+        end
+    end
+    
+    % Average Epochs 
+    for b = 1:num_bands
+        results_welch.(band_names{b})(:, i) = mean(stage_power_welch.(band_names{b}), 2);
+        results_ar_mdl.(band_names{b})(:, i) = mean(stage_power_ar.(band_names{b}), 2);
+    end
+    
+end
+\end{lstlisting}
 
-\vspace{0.5em} % Adds a little vertical space
+Once processed all the data, we plotted the results with the following code:
 
-\begin{itemize}
-    \item \textbf{Low Delta ($0.5-2$ Hz):} A sub-band of Delta often associated with the deepest stages of non-REM sleep (N3) and slow wave activity.
-    \item \textbf{Delta ($\delta$, $0.5-4$ Hz):} The hallmark of deep sleep (SWS/N3). Characterized by high amplitude and slow activity.
-    \item \textbf{Theta ($\theta$, $4-8$ Hz):} Predominant activity during the transition into sleep and light sleep stages (N1 and N2).
-    \item \textbf{Alpha ($\alpha$, $8-13$ Hz):} Associated with quiet, relaxed wakefulness, typically seen over the posterior scalp with eyes closed.
-    \item \textbf{Sigma ($\sigma$, $11-16$ Hz):} This range encompasses the **Sleep Spindles**, which are a defining feature of Stage N2 sleep.
-    \item \textbf{Beta ($\beta$, $16-35$ Hz):} High-frequency activity linked to active concentration, complex thought, and wakefulness.
-\end{itemize}
+\begin{lstlisting}[caption={Customized plotting function for laying topogram plots horizontally.}]
+for b = 1:num_bands
+    band_name = band_names{b};
+    
+    % Welch results
+    plot_comparison_topograms(results_welch.(band_name), stages, band_name, 'Welch', ['report/img/topogram_welch_', band_name, '.png']);
+    
+    % AR(MDL) results
+    plot_comparison_topograms(results_ar_mdl.(band_name), stages, band_name, 'AR (MDL)', ['report/img/topogram_ar_', band_name, '.png']);
+end
+\end{lstlisting}
 
 \subsection{Results}
 After applying the defined workflow to the 5 stages of sleep, 

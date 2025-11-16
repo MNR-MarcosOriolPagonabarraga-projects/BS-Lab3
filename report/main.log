@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.18)  16 NOV 2025 10:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.18)  16 NOV 2025 17:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -428,40 +428,47 @@ File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
-)) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count315
+\float@exts=\toks39
+\float@box=\box66
+\@float@everytoks=\toks40
+\@floatcapt=\box67
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count315
-\l__pdf_internal_box=\box66
-) (./main.aux (./sections/intro.aux) (./sections/exercise1.aux) (./sections/exercise2.aux))
+\l__color_backend_stack_int=\count316
+\l__pdf_internal_box=\box68
+) (./main.aux (./sections/exercise1.aux) (./sections/exercise2.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count316
+\scratchcounter=\count317
 \scratchdimen=\dimen292
-\scratchbox=\box67
-\nofMPsegments=\count317
-\nofMParguments=\count318
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count319
+\scratchbox=\box69
+\nofMPsegments=\count318
+\nofMParguments=\count319
+\everyMPshowfont=\toks41
+\MPscratchCnt=\count320
 \MPscratchDim=\dimen293
-\MPnumerator=\count320
-\makeMPintoPDFobject=\count321
-\everyMPtoPDFconversion=\toks40
+\MPnumerator=\count321
+\makeMPintoPDFobject=\count322
+\everyMPtoPDFconversion=\toks42
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -503,158 +510,231 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count322
+\c@lstlisting=\count323
 <template/img/etseib.png, id=4, 1129.21875pt x 1204.5pt>
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 9.
+Package pdftex.def Info: template/img/etseib.png  used on input line 10.
 (pdftex.def)             Requested size: 113.81102pt x 121.3944pt.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./template/img/etseib.png>]
-\openout2 = `sections/intro.aux'.
-
- (./sections/intro.tex
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./template/img/etseib.png>] (./sections/intro.tex
 Overfull \hbox (4.47417pt too wide) in paragraph at lines 5--8
 \T1/cmr/m/n/12 Sleep scor-ing is based on char-ac-ter-is-tic pat-terns in the elec-troen-cephalo-gram (EEG), electro-oculogram
  []
 
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 35.
+Package pdftex.def Info: template/img/etseib.png  used on input line 40.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
-[1
-
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
+[1{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 11.
+Package pdftex.def Info: template/img/etseib.png  used on input line 19.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
  [2]
 \openout2 = `sections/exercise1.aux'.
 
- (./sections/exercise1.tex)
+ (./sections/exercise1.tex
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 10.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 44.
+
+Overfull \hbox (78.58908pt too wide) in paragraph at lines 45--47
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 12.
+Package pdftex.def Info: template/img/etseib.png  used on input line 50.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
- [3
-
-
+[3
 
 ]
+<img/ex1/ps_methods.png, id=37, 667.7748pt x 472.164pt>
+File: img/ex1/ps_methods.png Graphic file (type png)
+<use img/ex1/ps_methods.png>
+Package pdftex.def Info: img/ex1/ps_methods.png  used on input line 87.
+(pdftex.def)             Requested size: 512.14963pt x 362.13368pt.
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 90.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [4]
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 111.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [5 <./img/ex1/ps_methods.png (PNG copy)>]
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 160.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [6]
+<img/ex1/LD.png, id=48, 572.8602pt x 422.5386pt>
+File: img/ex1/LD.png Graphic file (type png)
+<use img/ex1/LD.png>
+Package pdftex.def Info: img/ex1/LD.png  used on input line 180.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+<img/ex1/delta.png, id=49, 572.8602pt x 422.5386pt>
+File: img/ex1/delta.png Graphic file (type png)
+<use img/ex1/delta.png>
+Package pdftex.def Info: img/ex1/delta.png  used on input line 185.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+<img/ex1/theta.png, id=50, 572.8602pt x 422.5386pt>
+File: img/ex1/theta.png Graphic file (type png)
+<use img/ex1/theta.png>
+Package pdftex.def Info: img/ex1/theta.png  used on input line 192.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+<img/ex1/alpha.png, id=51, 572.8602pt x 422.5386pt>
+File: img/ex1/alpha.png Graphic file (type png)
+<use img/ex1/alpha.png>
+Package pdftex.def Info: img/ex1/alpha.png  used on input line 197.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+<img/ex1/sigma.png, id=52, 572.8602pt x 422.5386pt>
+File: img/ex1/sigma.png Graphic file (type png)
+<use img/ex1/sigma.png>
+Package pdftex.def Info: img/ex1/sigma.png  used on input line 204.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+<img/ex1/beta.png, id=53, 572.8602pt x 422.5386pt>
+File: img/ex1/beta.png Graphic file (type png)
+<use img/ex1/beta.png>
+Package pdftex.def Info: img/ex1/beta.png  used on input line 209.
+(pdftex.def)             Requested size: 230.46576pt x 169.99245pt.
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 212.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [7 <./img/ex1/LD.png (PNG copy)> <./img/ex1/delta.png (PNG copy)> <./img/ex1/theta.png (PNG copy)> <./img/ex1/alpha.png (PNG copy)>])
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 19.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [8 <./img/ex1/sigma.png (PNG copy)> <./img/ex1/beta.png (PNG copy)>]
 \openout2 = `sections/exercise2.aux'.
 
  (./sections/exercise2.tex
-<img/workflow.png, id=33, 624.3325pt x 554.07pt>
+<img/workflow.png, id=60, 624.3325pt x 554.07pt>
 File: img/workflow.png Graphic file (type png)
 <use img/workflow.png>
 Package pdftex.def Info: img/workflow.png  used on input line 21.
 (pdftex.def)             Requested size: 460.93153pt x 409.06694pt.
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 31.
+Package pdftex.def Info: template/img/etseib.png  used on input line 28.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
- [4
+ [9
 
 
 
  <./img/workflow.png>]
-<img/topogram_ar_low_delta.png, id=38, 1156.32pt x 284.7438pt>
+File: template/img/etseib.png Graphic file (type png)
+<use template/img/etseib.png>
+Package pdftex.def Info: template/img/etseib.png  used on input line 73.
+(pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
+ [10]
+<img/topogram_ar_low_delta.png, id=68, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_low_delta.png Graphic file (type png)
 <use img/topogram_ar_low_delta.png>
-Package pdftex.def Info: img/topogram_ar_low_delta.png  used on input line 51.
+Package pdftex.def Info: img/topogram_ar_low_delta.png  used on input line 104.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_low_delta.png, id=39, 1156.32pt x 284.7438pt>
+<img/topogram_welch_low_delta.png, id=69, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_low_delta.png Graphic file (type png)
 <use img/topogram_welch_low_delta.png>
-Package pdftex.def Info: img/topogram_welch_low_delta.png  used on input line 56.
+Package pdftex.def Info: img/topogram_welch_low_delta.png  used on input line 109.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 49--58
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 102--111
 [][]  [] 
  []
 
-<img/topogram_ar_delta.png, id=40, 1156.32pt x 284.7438pt>
+<img/topogram_ar_delta.png, id=70, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_delta.png Graphic file (type png)
 <use img/topogram_ar_delta.png>
-Package pdftex.def Info: img/topogram_ar_delta.png  used on input line 63.
+Package pdftex.def Info: img/topogram_ar_delta.png  used on input line 116.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_delta.png, id=41, 1156.32pt x 284.7438pt>
+<img/topogram_welch_delta.png, id=71, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_delta.png Graphic file (type png)
 <use img/topogram_welch_delta.png>
-Package pdftex.def Info: img/topogram_welch_delta.png  used on input line 68.
+Package pdftex.def Info: img/topogram_welch_delta.png  used on input line 121.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 61--70
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 114--123
 [][]  [] 
  []
 
-<img/topogram_ar_theta.png, id=42, 1156.32pt x 284.7438pt>
+<img/topogram_ar_theta.png, id=72, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_theta.png Graphic file (type png)
 <use img/topogram_ar_theta.png>
-Package pdftex.def Info: img/topogram_ar_theta.png  used on input line 75.
+Package pdftex.def Info: img/topogram_ar_theta.png  used on input line 128.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_theta.png, id=43, 1156.32pt x 284.7438pt>
+<img/topogram_welch_theta.png, id=73, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_theta.png Graphic file (type png)
 <use img/topogram_welch_theta.png>
-Package pdftex.def Info: img/topogram_welch_theta.png  used on input line 80.
+Package pdftex.def Info: img/topogram_welch_theta.png  used on input line 133.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 73--82
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 126--135
 [][]  [] 
  []
 
-<img/topogram_ar_alpha.png, id=44, 1156.32pt x 284.7438pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<img/topogram_ar_alpha.png, id=74, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_alpha.png Graphic file (type png)
 <use img/topogram_ar_alpha.png>
-Package pdftex.def Info: img/topogram_ar_alpha.png  used on input line 87.
+Package pdftex.def Info: img/topogram_ar_alpha.png  used on input line 140.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_alpha.png, id=45, 1156.32pt x 284.7438pt>
+<img/topogram_welch_alpha.png, id=75, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_alpha.png Graphic file (type png)
 <use img/topogram_welch_alpha.png>
-Package pdftex.def Info: img/topogram_welch_alpha.png  used on input line 92.
+Package pdftex.def Info: img/topogram_welch_alpha.png  used on input line 145.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 85--94
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 138--147
 [][]  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<img/topogram_ar_sigma.png, id=46, 1156.32pt x 284.7438pt>
+<img/topogram_ar_sigma.png, id=76, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_sigma.png Graphic file (type png)
 <use img/topogram_ar_sigma.png>
-Package pdftex.def Info: img/topogram_ar_sigma.png  used on input line 99.
+Package pdftex.def Info: img/topogram_ar_sigma.png  used on input line 152.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_sigma.png, id=47, 1156.32pt x 284.7438pt>
+<img/topogram_welch_sigma.png, id=77, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_sigma.png Graphic file (type png)
 <use img/topogram_welch_sigma.png>
-Package pdftex.def Info: img/topogram_welch_sigma.png  used on input line 104.
+Package pdftex.def Info: img/topogram_welch_sigma.png  used on input line 157.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 97--106
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 150--159
 [][]  [] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<img/topogram_ar_beta.png, id=48, 1156.32pt x 284.7438pt>
+<img/topogram_ar_beta.png, id=78, 1156.32pt x 284.7438pt>
 File: img/topogram_ar_beta.png Graphic file (type png)
 <use img/topogram_ar_beta.png>
-Package pdftex.def Info: img/topogram_ar_beta.png  used on input line 111.
+Package pdftex.def Info: img/topogram_ar_beta.png  used on input line 164.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
-<img/topogram_welch_beta.png, id=49, 1156.32pt x 284.7438pt>
+<img/topogram_welch_beta.png, id=79, 1156.32pt x 284.7438pt>
 File: img/topogram_welch_beta.png Graphic file (type png)
 <use img/topogram_welch_beta.png>
-Package pdftex.def Info: img/topogram_welch_beta.png  used on input line 116.
+Package pdftex.def Info: img/topogram_welch_beta.png  used on input line 169.
 (pdftex.def)             Requested size: 256.07481pt x 63.05658pt.
 
-Overfull \hbox (2.61049pt too wide) in paragraph at lines 109--118
+Overfull \hbox (2.61049pt too wide) in paragraph at lines 162--171
 [][]  [] 
  []
 
@@ -662,38 +742,38 @@ Overfull \hbox (2.61049pt too wide) in paragraph at lines 109--118
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--127
+Underfull \hbox (badness 10000) in paragraph at lines 175--180
 
  []
 
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 127.
+Package pdftex.def Info: template/img/etseib.png  used on input line 180.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
-[5 <./img/topogram_ar_low_delta.png (PNG copy)> <./img/topogram_welch_low_delta.png (PNG copy)> <./img/topogram_ar_delta.png (PNG copy)> <./img/topogram_welch_delta.png (PNG copy)> <./img/topogram_ar_theta.png (PNG copy)> <./img/topogram_welch_theta.png (PNG copy)>])
+[11 <./img/topogram_ar_low_delta.png (PNG copy)> <./img/topogram_welch_low_delta.png (PNG copy)> <./img/topogram_ar_delta.png (PNG copy)> <./img/topogram_welch_delta.png (PNG copy)>])
 File: template/img/etseib.png Graphic file (type png)
 <use template/img/etseib.png>
-Package pdftex.def Info: template/img/etseib.png  used on input line 13.
+Package pdftex.def Info: template/img/etseib.png  used on input line 20.
 (pdftex.def)             Requested size: 40.00914pt x 42.67912pt.
- [6 <./img/topogram_ar_alpha.png (PNG copy)> <./img/topogram_welch_alpha.png (PNG copy)> <./img/topogram_ar_sigma.png (PNG copy)> <./img/topogram_welch_sigma.png (PNG copy)> <./img/topogram_ar_beta.png (PNG copy)> <./img/topogram_welch_beta.png (PNG copy)>] (./main.aux (./sections/intro.aux) (./sections/exercise1.aux) (./sections/exercise2.aux))
+ [12 <./img/topogram_ar_theta.png (PNG copy)> <./img/topogram_welch_theta.png (PNG copy)> <./img/topogram_ar_alpha.png (PNG copy)> <./img/topogram_welch_alpha.png (PNG copy)> <./img/topogram_ar_sigma.png (PNG copy)> <./img/topogram_welch_sigma.png (PNG copy)> <./img/topogram_ar_beta.png (PNG copy)> <./img/topogram_welch_beta.png (PNG copy)>] (./main.aux (./sections/exercise1.aux) (./sections/exercise2.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17661 strings out of 476106
- 345278 string characters out of 5793932
- 1934975 words of memory out of 5000000
- 39375 multiletter control sequences out of 15000+600000
- 570341 words of font info for 60 fonts, out of 8000000 for 9000
+ 18223 strings out of 476106
+ 352144 string characters out of 5793932
+ 2073975 words of memory out of 5000000
+ 39930 multiletter control sequences out of 15000+600000
+ 572053 words of font info for 64 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,15n,107p,483b,411s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1200.pfb>
-Output written on main.pdf (7 pages, 6362594 bytes).
+ 99i,16n,107p,489b,1893s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfit1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on main.pdf (13 pages, 7731649 bytes).
 PDF statistics:
- 108 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
+ 154 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,1 +1,242 @@
 \section{Feasibility Assessment}
+
+\subsection{a) Compare the PSD functions for the channels Fz, Cz and Pz obtained in all 7 spectral methods in a figure (consider only the epoch 1).}
+\subsubsection*{Epoch 1: corresponds to the first 5 seconds}
+\begin{itemize}
+    \item First, we compute the PSD for the last 19 EEG channels, for the first 5 seconds (epoch 1). 
+    \item Then select from the third channel (this included) until the last one, in total 29 channels. This is because the first two correspond to the two ocular channels.
+\end{itemize}
+
+\begin{lstlisting}
+fs = 100; % Sampling frequency (Hz)
+N = 5*fs; % samples in one 5-seconds epoch
+
+% Compute all PSD from the 19 EEG channels (ephoch 1)
+% We select the first 5 seconds epoch and the last 19EEG channels:
+eegi = signals(1:N,3:21); % From 1 to 500 samples (5 seconds)
+\end{lstlisting}
+
+\vspace{0.7cm}
+Then, it is important to filter the signal. As frequency bands come from 0.5 Hz to 35 Hz, it is convenient to remove the very low frequency components associated 
+mainly with the movement and other brain activities different to delta rhythms. By doing this it will permit to estimate better the PSD.
+\vspace{0.7cm}
+
+\begin{lstlisting}
+% Apply high-pass filter
+[b,a] = ellip(6,0.5,40,.4/(fs/2),'high');
+eeg = filtfilt(b,a,eegi);
+\end{lstlisting}
+
+\vspace{0.7cm}
+\noindent With the data filtered, we will proceed to compute the PSD using the 7 spectral methods, defined in ~\ref{sec:psd_methods}.
+\vspace{0.7cm}
+
+\begin{lstlisting}[caption={Code used for running the different Power Spectral Methods.}]
+% Method 1 - Periodogram, considering a FFT with 1000 points:
+[Pxx,f]=periodogram(eeg,[],1000,fs,'onesided');
+
+% Method 2 - Periodogram using a Hamming window
+[PxxH,f]=periodogram(eeg,hamming(500),1000,fs,'onesided');
+
+% Method 3 - averaged Welch periodogram
+number_segments = 4;
+overlap = 0.5;
+samples_segment = floor(length(eeg)/(number_segments-(number_segments-1)*overlap));
+[PxxW,f]=pwelch(eeg,samples_segment,floor(samples_segment*overlap),1000,fs,'onesided'); 
+
+% Method 4 - Burg method with low order of 2
+[Parb2,f]= pburg(eeg,2,1000,fs,'onesided');
+
+% Method 5 - Burg method with high order of 50
+[Parb50,f]= pburg(eeg,50,1000,fs,'onesided');
+
+% Method 6 and 7 - AIC and MDL, respectively
+nch = size(eeg, 2);
+nnaic = zeros(nch, 1);
+nnmdl = zeros(nch, 1);
+
+for n = 1:nch
+ data1= iddata(eeg(1:N/2, n),[],fs);
+ data2= iddata(eeg(N/2 + 1: N,n),[], fs);
+ V1=arxstruc(data1,data2, (1:60));
+ nnaic(n)=selstruc(V1,'aic');
+ nnmdl(n)=selstruc(V1,'mdl');
+end
+
+% Method 6 (AIC)
+naic = round(mean(nnaic));
+[Parbaic,f] = pburg(eeg,naic,1000,fs,'onesided');
+
+% Method 7 (MDL)
+nmdl=round(mean(nnmdl));
+[Parbmdl,f]= pburg(eeg,nmdl,1000,fs,'onesided');
+\end{lstlisting}
+
+We now select the channels indicated (Fz, Cz and Pz). Since the data we are working with ("eeg") has already 19 channels 
+(the two first, corresponding to the ocular channels, have been removed previously, variable "eegi"), we can assign the 
+following correspondences between channelsa and rows from "eegi":
+
+\begin{itemize}
+    \item Fz: 5th channel
+    \item Cz: 10th channel
+    \item Pz: 15th channel
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{img/ex1/ps_methods}
+    \caption{7 PSD methods applied to the epoch 1 of S1 data.}
+\end{figure}
+
+
+\subsection{b) Compare the topograms of all 7 spectral methods in a figure for each relative power (indicate the max value considered in each of both figures).}
+The frequency bands and their corresponding limits are the ones indicated in ~\ref{sec:defined_bands}.
+Next, we present the code used for calculating the PSD methods for the defined bands.
+
+\begin{lstlisting}[caption={Matlab code used for running the different PSD for each frequency band.}]
+% Define the 7 spectral methods and their names
+PSD_methods = {Pxx, PxxH, PxxW, Parb2, Parb50, Parbaic, Parbmdl};
+method_names = {'Periodogram', 'Hamming', 'Welch', 'Burg (p=2)', 'Burg (p=50)', 'Burg (AIC)', 'Burg (MDL)'};
+num_methods = length(PSD_methods);
+num_channels = size(eeg, 2);
+
+% Define all 6 frequency bands and their limits
+Band_Limits = {
+    'Low Delta (0.5 - 2 Hz)', [0.5, 2.0];
+    'Delta (2 - 4 Hz)',       [2.0, 4.0];
+    'Theta (4 - 7.5 Hz)',     [4.0, 7.5];
+    'Alpha (7.5 - 12 Hz)',    [7.5, 12.0];
+    'Sigma (12 - 15 Hz)',     [12.0, 15.0];
+    'Beta (15 - 35 Hz)',      [15.0, 35.0];
+};
+
+num_bands = size(Band_Limits, 1);
+
+% Total frequency range for normalization
+f_min_total = 0.5; % Hz
+f_max_total = 30.0; % Hz 
+idx_total = find(f >= f_min_total & f <= f_max_total); % f: frequency vector
+
+for band_idx = 1:num_bands
+    
+    % --- Get Current Band Info ---
+    band_name = Band_Limits{band_idx, 1};
+    f_min_band = Band_Limits{band_idx, 2}(1);
+    f_max_band = Band_Limits{band_idx, 2}(2);
+
+    disp(['Processing band: ', band_name]);
+
+    % Find frequency indices for the current band
+    idx_band = find(f >= f_min_band & f <= f_max_band);
+    
+   % Initialize matrix to store relative power for all methods (Rows=Methods, Cols=Channels)
+   % Relative power calculated as before
+    Relative_Power_Matrix = zeros(num_methods, num_channels); 
+    
+    for m = 1:num_methods
+        current_Pxx = PSD_methods{m};
+        
+        for ch = 1:num_channels
+            % Absolute power
+            absolute_power = sum(current_Pxx(idx_band, ch));
+
+            % Total power
+            total_power = sum(current_Pxx(idx_total, ch));
+
+            % Relative power
+            Relative_Power_Matrix(m, ch) = absolute_power / total_power;
+        end
+    end
+    
+    % --- Determine Common Limits for plotting ---
+    % Find the overall maximum relative power for consistent color scaling
+    max_relative_power = max(Relative_Power_Matrix(:));
+    common_limits = [0, max_relative_power];
+    
+    figure;
+    sgtitle([band_name, ' Relative Power Topograms'], 'FontSize', 14);
+
+    for m = 1:num_methods
+        subplot(3, 3, m);
+        draw_topogram(Relative_Power_Matrix(m, :)', common_limits); 
+        
+        title(method_names{m});
+        
+        % Add a colorbar only to the last plot (Method 7) for reference
+        if m == num_methods
+            colorbar('Location', 'EastOutside');
+        end
+    end
+    
+end
+\end{lstlisting}
+
+
+\subsection{Results}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/LD}
+    \end{subfigure}
+    \hfill
+     \begin{subfigure}{0.45\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/delta}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/theta}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/alpha}
+    \end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/sigma}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{img/ex1/beta}
+    \end{subfigure}
+\end{figure}
+
+It can be observed that we have satisfied the requirement to use the saem limits 
+[min, max] across all seven topograms in a signle figure, where min is 0 and max 
+corresponds to the maximum value for all channesl and all methods in the figure.
+
+
+\subsection{Discussion}
+\noindent \subsubsection*{Feasibility}
+For the dominant bands—\textbf{Low Delta, Delta, Theta, and Alpha}—all seven estimators 
+(non-parametric Periodogram, Hamming, and Welch, along with the parametric Burg methods) 
+produced \textbf{highly similar spatial distributions}. For instance, the Alpha band consistently 
+showed a posterior-occipital maximum, while the \textbf{Delta band} (2-4 Hz) was also strongly 
+localized posteriorly. This high level of agreement across various algorithms \textbf{confirms 
+the feasibility and robustness} of the calculated relative power distributions for these 
+major frequency components.
+
+\noindent \subsubsection*{Can we observe the same tendency in all frequency bands during deeper sleep stages?}
+When examining the "tendency" across all six frequency bands, it is clear that \textbf{the same topographic 
+pattern is not observed}. The maximum relative power shifts significantly depending on the band: Low Delta, 
+Theta, and Beta activity were concentrated primarily in the anterior \textbf{(frontal)} regions of the scalp, whereas, 
+the Delta (2-4 Hz), Alpha, and Sigma activity localized to the \textbf{posterior (occipital/parietal) and central} areas.
+
+
+\noindent \subsubsection*{Is there any band more affected than others by the estimator selection (methods)?}
+The \textbf{Sigma band (12-15 Hz)} was the \textbf{most affected} because its low power (max ~ 0.06) makes the estimate volatile. 
+Non-parametric methods like \textbf{Welch} create a \textbf{diffuse} pattern due to smoothing. In contrast, \textbf{parametric Burg methods} 
+(AIC/MDL) offer \textbf{superior frequency resolution} and successfully reveal the \textbf{sharper, localized peaks} of the sleep spindles. 
+This difference proves that estimator choice is critical for accurately localizing narrow-band, low-magnitude features.
+
+
+

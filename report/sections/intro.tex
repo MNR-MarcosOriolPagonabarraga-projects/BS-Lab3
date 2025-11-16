@@ -15,8 +15,27 @@ older Rechtschaffen and Kales (R and K) system.
 \end{enumerate}
 
 
-\subsection{Power Spectral Density (PSD) Methods}
+\subsection{Defined Frequency Bands}
+\label{sec:defined_bands}
 
+\noindent For the quantitative analysis of the EEG signal across sleep stages, the Power Spectral Density (PSD) is segmented into the following 
+frequency bands. The power contained within these ranges correlates directly to distinct mental or sleep states.
+
+\vspace{0.5em} % Adds a little vertical space
+
+\begin{itemize}
+    \item \textbf{Low Delta ($0.5-2$ Hz):} A sub-band of Delta often associated with the deepest stages of non-REM sleep (N3) and slow wave activity.
+    \item \textbf{Delta ($\delta$, $0.5-4$ Hz):} The hallmark of deep sleep (SWS/N3). Characterized by high amplitude and slow activity.
+    \item \textbf{Theta ($\theta$, $4-8$ Hz):} Predominant activity during the transition into sleep and light sleep stages (N1 and N2).
+    \item \textbf{Alpha ($\alpha$, $8-13$ Hz):} Associated with quiet, relaxed wakefulness, typically seen over the posterior scalp with eyes closed.
+    \item \textbf{Sigma ($\sigma$, $11-16$ Hz):} This range encompasses the **Sleep Spindles**, which are a defining feature of Stage N2 sleep.
+    \item \textbf{Beta ($\beta$, $16-35$ Hz):} High-frequency activity linked to active concentration, complex thought, and wakefulness.
+\end{itemize}
+
+
+
+\subsection{Power Spectral Density (PSD) Methods}
+\label{sec:psd_methods}
 Power Spectral Density (PSD) estimation determines how the power of a signal is distributed over frequency. The methods fall into two main categories: Non-Parametric (based on the Fourier Transform) and Parametric (based on model fitting).
 
 \vspace{0.5em}
