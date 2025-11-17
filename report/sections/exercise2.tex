@@ -19,7 +19,7 @@ In this exercise we will:
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.9\textwidth]{img/workflow}
-    \caption{Workflow done to achieve the exercise.}
+    \caption*{Figure 2: Workflow done to achieve the exercise.}
 \end{figure}
 
 \vspace{1cm}
@@ -79,7 +79,9 @@ for i = 1:num_stages
 end
 \end{lstlisting}
 
+\vspace{0.5cm}
 Once processed all the data, we plotted the results with the following code:
+\vspace{0.5cm}
 
 \begin{lstlisting}[caption={Customized plotting function for laying topogram plots horizontally.}]
 for b = 1:num_bands
@@ -172,13 +174,16 @@ we obtained the following results for the previously defined bands.
 
 
 \subsection{Discussion}
-The obtained result match very well with what is described in the literature.
-Showing a clear correlation with Power Sprectral Density and activity in each specific 
+The \textbf{obtained results} match very well with what is \textbf{described in the literature}.
+Showing a \textbf{clear correlation with Power Sprectral Density and activity} in each specific 
 case. 
 In our opinion, the stage S1 (N1) is very interesting because appears to have oscillations 
 from both stages (sleep/awake) and has activity of all the bands except from alpha band.\\
 
-Both Welch Periodogram and AR (MDL) PSD methods perform very similarly. However, by observing 
-topogram representations of PSD power/electrode, we think that the AR method is more prone to 
-saturate (giving less visual evidence of differences across electrodes), whereas the Welch 
-method seems more balanced.
+Both \textbf{Welch Periodogram and AR (MDL) PSD methods perform very similarly}. However, by observing 
+topogram representations of PSD power/electrode, we think that the \textbf{AR method} is more \textbf{prone to 
+saturate} (giving less visual evidence of differences across electrodes), whereas the \textbf{Welch 
+method seems more balanced}.
+
+No specific band based on the topograms from 3.1. results shows difference in deep sleep stages. All the results in
+the AR (MDL) and Welch methods appear to have very similar outputs for each band.

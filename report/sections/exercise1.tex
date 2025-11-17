@@ -1,13 +1,25 @@
 \section{Feasibility Assessment}
+In this section, we will be working with S1.mat recording.
+\subsubsection*{Data Loading}
+In the "S1.mat" file there are 21 biological channels recorded during 30 seconds with a sampling frequency of 100 Hz. 
+In the document it is mentionted that: 
+\textit{It is usually used to consider EEG signals stationary during 5-secnods epochs. 
+Thereofre, from here we can determine that there are 5 epochs of 5 seconds each.}
+
 
 \subsection{a) Compare the PSD functions for the channels Fz, Cz and Pz obtained in all 7 spectral methods in a figure (consider only the epoch 1).}
-\subsubsection*{Epoch 1: corresponds to the first 5 seconds}
+
 \begin{itemize}
+    \item Epoch 1: corresponds to the first 5 seconds.
     \item First, we compute the PSD for the last 19 EEG channels, for the first 5 seconds (epoch 1). 
-    \item Then select from the third channel (this included) until the last one, in total 29 channels. This is because the first two correspond to the two ocular channels.
+    \item Then we selected from the third channel (this included) until the last one, in total 29 channels. This is because the first two correspond to the two ocular channels.
 \end{itemize}
 
+
 \begin{lstlisting}
+% load data
+load("data/EEG_signals-20251023/S1.mat")
+
 fs = 100; % Sampling frequency (Hz)
 N = 5*fs; % samples in one 5-seconds epoch
 
@@ -16,10 +28,10 @@ N = 5*fs; % samples in one 5-seconds epoch
 eegi = signals(1:N,3:21); % From 1 to 500 samples (5 seconds)
 \end{lstlisting}
 
-\vspace{0.7cm}
+\vspace{0.3cm}
 Then, it is important to filter the signal. As frequency bands come from 0.5 Hz to 35 Hz, it is convenient to remove the very low frequency components associated 
 mainly with the movement and other brain activities different to delta rhythms. By doing this it will permit to estimate better the PSD.
-\vspace{0.7cm}
+\vspace{0.3cm}
 
 \begin{lstlisting}
 % Apply high-pass filter
@@ -27,9 +39,9 @@ mainly with the movement and other brain activities different to delta rhythms. 
 eeg = filtfilt(b,a,eegi);
 \end{lstlisting}
 
-\vspace{0.7cm}
+\vspace{0.3cm}
 \noindent With the data filtered, we will proceed to compute the PSD using the 7 spectral methods, defined in ~\ref{sec:psd_methods}.
-\vspace{0.7cm}
+\vspace{0.3cm}
 
 \begin{lstlisting}[caption={Code used for running the different Power Spectral Methods.}]
 % Method 1 - Periodogram, considering a FFT with 1000 points:
@@ -42,7 +54,7 @@ eeg = filtfilt(b,a,eegi);
 number_segments = 4;
 overlap = 0.5;
 samples_segment = floor(length(eeg)/(number_segments-(number_segments-1)*overlap));
-[PxxW,f]=pwelch(eeg,samples_segment,floor(samples_segment*overlap),1000,fs,'onesided'); 
+[PxxW,f] = pwelch(eeg,samples_segment,floor(samples_segment*overlap), 1000, fs, 'onesided'); 
 
 % Method 4 - Burg method with low order of 2
 [Parb2,f]= pburg(eeg,2,1000,fs,'onesided');
@@ -72,6 +84,8 @@ nmdl=round(mean(nnmdl));
 [Parbmdl,f]= pburg(eeg,nmdl,1000,fs,'onesided');
 \end{lstlisting}
 
+\vspace{0.3cm}
+
 We now select the channels indicated (Fz, Cz and Pz). Since the data we are working with ("eeg") has already 19 channels 
 (the two first, corresponding to the ocular channels, have been removed previously, variable "eegi"), we can assign the 
 following correspondences between channelsa and rows from "eegi":
@@ -82,9 +96,34 @@ following correspondences between channelsa and rows from "eegi":
     \item Pz: 15th channel
 \end{itemize}
 
+\noindent \subsubsection*{Plotting code}
+To perform the following code, we have used ChatGPT, as the code for plotting the PSD from the 7 methods is very similar, just changing the data used (Pxx, PxxH, PxxW, etc.) and the title with the corresponding method used.
+
+\begin{lstlisting}[caption={Matlab code for plotting PSD.}]
+methods = {'Periodogram','Periodogram + Hamming','Welch', ...
+           'Burg(2)','Burg(50)', 'Burg(AIC)','Burg(MDL)'};
+
+idxFz = 5;
+idxCz = 10;
+idxPz = 15;
+
+nexttile;
+plot(f, Pxx(:,idxFz), 'LineWidth',1); hold on;
+plot(f, Pxx(:,idxCz), 'LineWidth',1);
+plot(f, Pxx(:,idxPz), 'LineWidth',1); hold off;
+title('Periodogram');
+xlabel('Frequency (Hz)');
+ylabel('Power Spectral Density (Power/Hz)');
+xlim([0 50]);
+grid on;
+legend({'Fz','Cz','Pz'},'Location','northeast');
+\end{lstlisting}
+
+\noindent \subsubsection*{Plotting Result}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{img/ex1/ps_methods}
+    \includegraphics[width=0.8\textwidth]{img/ex1/ps_methods}
     \caption{7 PSD methods applied to the epoch 1 of S1 data.}
 \end{figure}
 
@@ -158,7 +197,7 @@ for band_idx = 1:num_bands
 
     for m = 1:num_methods
         subplot(3, 3, m);
-        draw_topogram(Relative_Power_Matrix(m, :)', common_limits); 
+        draw_topogram(Relative_Power_Matrix(m, :), common_limits); 
         
         title(method_names{m});
         
@@ -173,6 +212,8 @@ end
 
 
 \subsection{Results}
+Below we are presenting the different relative power 
+topograms obtained for the different frequency bands.
 
 \begin{figure}[H]
     \begin{subfigure}{0.45\textwidth}
@@ -184,6 +225,7 @@ end
         \centering
         \includegraphics[width=\linewidth]{img/ex1/delta}
     \end{subfigure}
+    \label{fig:topogram_ex1}
 \end{figure}
 
 \begin{figure}[H]
@@ -212,31 +254,32 @@ end
 
 It can be observed that we have satisfied the requirement to use the saem limits 
 [min, max] across all seven topograms in a signle figure, where min is 0 and max 
-corresponds to the maximum value for all channesl and all methods in the figure.
+corresponds to the maximum value for all channels and all methods in the figure.
 
 
 \subsection{Discussion}
-\noindent \subsubsection*{Feasibility}
-For the dominant bands—\textbf{Low Delta, Delta, Theta, and Alpha}—all seven estimators 
-(non-parametric Periodogram, Hamming, and Welch, along with the parametric Burg methods) 
-produced \textbf{highly similar spatial distributions}. For instance, the Alpha band consistently 
-showed a posterior-occipital maximum, while the \textbf{Delta band} (2-4 Hz) was also strongly 
-localized posteriorly. This high level of agreement across various algorithms \textbf{confirms 
-the feasibility and robustness} of the calculated relative power distributions for these 
-major frequency components.
+From Figure 1, we can see that depending on the estimator used, the PSD functions
+obtained are different.
+\begin{itemize}
+    \item When we use the non-parametric methods (periodogram and Welch methods) it
+can be seen that, for the periodogram method, the PSD functions obtained are
+quite noisy (have several peaks), whereas when using the Welch’s method, the
+PSD functions are smoother, which means that in this case there it is not capturing
+that much details.
+    \item  When using the parametric methods, we can see that the PSD obtained are much
+smoother in comparison with the ones obtained with the non-parametric
+methods. However, when using the Burg method with order 50, the spectrum
+obtained shows sharp peaks, therefore, it is trying to include more details, but
+consequently, it is introducing more noise.
+\end{itemize}
 
-\noindent \subsubsection*{Can we observe the same tendency in all frequency bands during deeper sleep stages?}
-When examining the "tendency" across all six frequency bands, it is clear that \textbf{the same topographic 
-pattern is not observed}. The maximum relative power shifts significantly depending on the band: Low Delta, 
-Theta, and Beta activity were concentrated primarily in the anterior \textbf{(frontal)} regions of the scalp, whereas, 
-the Delta (2-4 Hz), Alpha, and Sigma activity localized to the \textbf{posterior (occipital/parietal) and central} areas.
-
-
-\noindent \subsubsection*{Is there any band more affected than others by the estimator selection (methods)?}
-The \textbf{Sigma band (12-15 Hz)} was the \textbf{most affected} because its low power (max ~ 0.06) makes the estimate volatile. 
-Non-parametric methods like \textbf{Welch} create a \textbf{diffuse} pattern due to smoothing. In contrast, \textbf{parametric Burg methods} 
-(AIC/MDL) offer \textbf{superior frequency resolution} and successfully reveal the \textbf{sharper, localized peaks} of the sleep spindles. 
-This difference proves that estimator choice is critical for accurately localizing narrow-band, low-magnitude features.
-
-
-
+Regarding the topograms, these show the spatial distribution of relative power
+across all six EEG frequency bands, and how that distribution is affected by the seven
+methos we have used. By comparing the topograms generated by the seven methods for
+the same frequency band, we want to assess the feasibility of the results. Therefore,
+looking at the topograms, we see that most of the methods produce highly similar
+topographic patterns. In addition, we also see that the Burg method with order 2 can be
+considered infeasible since for all the frequency bands, this method produces a spatial
+distribution different from the other methods. In conclusion, six out of the seven methods
+used agree on the power distribution (have similar results), therefore, we can say that the
+results obtained are feasible.
